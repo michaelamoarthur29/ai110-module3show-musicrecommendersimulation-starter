@@ -172,11 +172,14 @@ Top recommendations:
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
+Full outputs and analysis are in the Evaluation section of [model_card.md](model_card.md).
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+- **Six profiles** were tested in `src/main.py`: three standard (High-Energy Pop, Chill Lofi, Deep Intense Rock) and three adversarial (Sad Banger, Ghost Genre, Acoustic EDM).
+- **Weight shift (genre 2.0 → 1.0, energy 1.5 → 3.0):**
+  - For High-Energy Pop, *Rooftop Lights* (happy) moved above *Gym Hero* (intense), which is more accurate.
+  - Chill Lofi and Deep Intense Rock didn't change.
+  - The conflicting profiles lost their genre/mood matches completely and became pure energy matches, which made them different but not better.
+- **Biggest finding:** with the original weights, genre and mood labels beat the song's actual feel. A listener asking for sad songs at energy 0.9 gets a quiet folk song (energy 0.25) at #1.
 
 ---
 
